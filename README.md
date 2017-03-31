@@ -15,9 +15,10 @@ This is a light weight library that helps in the posting of files to IIS Webserv
     [HttpPost]   
      public ActionResult UploadFile(HttpPostedFileBase file)
           {
-            FileHelper helper = new FileHelper();
-             filehelper.ProcessFile(file, "{Name of Existing or New Directory}");
-              return view();
+             //Instanciate the Filehelper class to create a Filehelper Object
+             FileHelper filehelper = new FileHelper();
+             filehelper.ProcessFile(file, "{path to Existing or New Directory}");
+               return view();
         }
 
      
