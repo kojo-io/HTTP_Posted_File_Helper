@@ -1,15 +1,25 @@
 Features of HTTP Posted File Helper V.1.0.1
 
-Below are the features of the library and code spinets to show how it can be used
+This is a lightweight library that helps in the everyday posting of files to the Webserver. It eleminates repetition of logic by providing a helper class called <code>FileHElper</code>
 
-**Processing Single Files (Basic Usage)**<br />
+**Installing..**
+<code>  PM> Install-Package HttpPostedFileHelper </code>
+
+**Usage**
+<code>
+//Reference the Library
+using HttpPostedFileHelper;
+</code>
+
+
+**Processing Single Files (Basic Usage)**
     
     [HttpPost]   
      public ActionResult UploadFile(HttpPostedFileBase file)
           {
             FileHelper helper = new FileHelper();
              filehelper.ProcessFile(file, "{Name of Existing or New Directory}");
-               return view();
+              return view();
         }
 
      
@@ -20,12 +30,11 @@ Below are the features of the library and code spinets to show how it can be use
                  
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> UploadFile(Model model, IEnumerable<HttpPostedFileBase> file)
+        public ActionResult UploadFile(Model model, IEnumerable<HttpPostedFileBase> file)
         {
             FileHelper filehelper = new FileHelper();
             // ProcessFileAsync returns count of files processed           
-            int postedfiles = await filehelper.ProcessFileAsync(file, "~/PostedFiles", ".pdf,.jpeg");
-            //you can do some other work while awaiting
+            int postedfiles = filehelper.ProcessFileAsync(file, "~/PostedFiles");
             if (postedfiles > 0)
             {
                 //files were written successfully
@@ -42,8 +51,27 @@ Below are the features of the library and code spinets to show how it can be use
             public async Task<ActionResult> UploadFile(Model model, IEnumerable<HttpPostedFileBase> file)
            {
             FileHelper filehelper = new FileHelper();          
-            int postedfiles = await filehelper.ProcessFileAsync(file, "~/PostedFiles", ".pdf,.jpeg");
+            await filehelper.ProcessFileAsync(file, "~/PostedFiles");
             //you can do some other work while awaiting          
             return View("Home");
           }
+          
+          
+      **Reject File Extensions During Upload**
+         You can specify the file types to be rejected during an upload by supplying a <code>string</code> of the file extensions
+             
+             [HttpPost]
+             [ValidateAntiForgeryToken]
+             public async Task<ActionResult> UploadFile(Model model, IEnumerable<HttpPostedFileBase> file)
+             {
+               FileHelper filehelper = new FileHelper();
+                string reject = ".jpeg,.png,.svg";
+                int postedfiles = await filehelper.ProcessFileAsync(file, "~/PostedFiles",reject);
+                //you can do some other work while awaiting   
+                 if (postedfiles > 0)
+               {
+                    //files were written successfully
+               }   
+                 return View("Home");
+             }
   
