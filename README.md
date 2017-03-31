@@ -1,6 +1,6 @@
 Features of HTTP Posted File Helper V.1.0.1
 
-This is a lightweight library that helps in the everyday posting of files to the Webserver. It eleminates repetition of logic by providing a helper class called <code>FileHElper</code>
+This is a light weight library that helps in the everyday posting of files to IIS Webserver. It providing a helper class <code>FileHElper</code> which contains overloaded <code>ProcessFile</code> methods which does all the work for you.
 
 **Installing..**<br>
 <code>  PM> Install-Package HttpPostedFileHelper </code>
@@ -21,11 +21,10 @@ This is a lightweight library that helps in the everyday posting of files to the
         }
 
      
-  **Processing Multiple Files**
+  **Processing Multiple Files**<br>
    This makes provision for multiple files being uploaded to the server with an overridden method
    for Processing an <code>IEnumerable</code> of files (HttpPostedFileBase Collection)
-    
-                 
+                  
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult UploadFile(Model model, IEnumerable<HttpPostedFileBase> file)
@@ -41,7 +40,7 @@ This is a lightweight library that helps in the everyday posting of files to the
         }
 
     
-   **Asynchronous File Processing**
+   **Asynchronous File Processing**<br>
        Processing files can be done Asynchronously, this allows large files to be processed in the background thread freeing the main          thread
              
            [HttpPost]
@@ -55,7 +54,7 @@ This is a lightweight library that helps in the everyday posting of files to the
           }
           
           
-      **Reject File Extensions During Upload**
+      **Reject File Extensions During Upload**<br>
          You can specify the file types to be rejected during an upload by supplying a <code>string</code> of the file extensions
              
              [HttpPost]
@@ -67,9 +66,9 @@ This is a lightweight library that helps in the everyday posting of files to the
                 int postedfiles = await filehelper.ProcessFileAsync(file, "~/PostedFiles",reject);
                 //you can do some other work while awaiting   
                  if (postedfiles > 0)
-               {
+                 {
                     //files were written successfully
-               }   
+                 }   
                  return View("Home");
              }
   
