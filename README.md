@@ -2,15 +2,13 @@ Features of HTTP Posted File Helper V.1.0.1
 
 This is a lightweight library that helps in the everyday posting of files to the Webserver. It eleminates repetition of logic by providing a helper class called <code>FileHElper</code>
 
-**Installing..**
+**Installing..**<br>
 <code>  PM> Install-Package HttpPostedFileHelper </code>
 
-**Usage**
-<code>
-//Reference the Library
-using HttpPostedFileHelper;
-</code>
+**Usage**<br>
 
+     //Reference the Library
+      using HttpPostedFileHelper;
 
 **Processing Single Files (Basic Usage)**
     
