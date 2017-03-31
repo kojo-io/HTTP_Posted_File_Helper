@@ -54,7 +54,7 @@ This is a light weight library that helps in the posting of files to IIS Webserv
             }
           
           
-    **Reject File Extensions During Upload**<br>
+   **Reject File Extensions During Upload**<br>
        You can specify the file types to be rejected during an upload by supplying a <code>string</code> of the file extensions         
                
              [HttpPost]
