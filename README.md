@@ -1,5 +1,7 @@
 Features of HTTP Posted File Helper V.1.0.1
 
+<img src="https://github.com/frankodoom/HTTP_Posted_File_Helper/blob/master/Resource/logo.png?raw=true" />
+
 This is a light weight library that helps in the posting of files to IIS Webserver. It providing a helper class <code>FileHElper</code> which contains overloaded m<code>ProcessFile</code> methods which does all the work for you and reduces the everyday boilerplate in posting files.
 
 **Installing..**<br>
@@ -12,14 +14,15 @@ This is a light weight library that helps in the posting of files to IIS Webserv
 
 **Processing Single Files (Basic Usage)**
     
-    [HttpPost]   
+    [HttpPost]  
+    [ValidateAntiForgeryToken] 
      public ActionResult UploadFile(HttpPostedFileBase file)
           {
              //Instanciate the Filehelper class to create a Filehelper Object
              FileHelper filehelper = new FileHelper();
              filehelper.ProcessFile(file, "{path to Existing or New Directory}");
                return view();
-        }
+           }
 
      
   **Processing Multiple Files**<br>
@@ -46,12 +49,12 @@ This is a light weight library that helps in the posting of files to IIS Webserv
              
            [HttpPost]
            [ValidateAntiForgeryToken]
-            public async Task<ActionResult> UploadFile(Model model, IEnumerable<HttpPostedFileBase> file)
+           public async Task<ActionResult> UploadFile(Model model, IEnumerable<HttpPostedFileBase> file)
            {
-            FileHelper filehelper = new FileHelper();          
-            await filehelper.ProcessFileAsync(file, "~/MyTargetLocation");
-            //you can do some other work while awaiting          
-            return View("Home");
+              FileHelper filehelper = new FileHelper();          
+              await filehelper.ProcessFileAsync(file, "~/MyTargetLocation");
+              //you can do some other work while awaiting          
+               return View("Home");
             }
           
           
@@ -66,10 +69,10 @@ This is a light weight library that helps in the posting of files to IIS Webserv
                 string reject = ".jpeg,.png,.svg";
                 int postedfiles = await filehelper.ProcessFileAsync(file, "~/MyTargetLocation",reject);
                 //you can do some other work while awaiting   
-                 if (postedfiles > 0)
-                   {
+                if (postedfiles > 0)
+                 {
                     //files were written successfully
-                    }   
+                  }   
                  return View("Home");
-             }
+              }
   
