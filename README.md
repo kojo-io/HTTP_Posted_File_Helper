@@ -1,7 +1,7 @@
 
 HTTP Posted File Helper V.1.0.1
 
-This is a light weight library that helps in the posting of files to IIS Webserver. It providing a helper class <code>FileHElper</code> which contains overloaded methods <code>ProcessFile()</code> which reduces the boilerplate in posting files.
+This is a light weight library that helps in the posting of files to IIS Webserver. It providing a helper class <code>FileHElper.cs</code> which contains overloaded methods <code>ProcessFile()</code> which reduces the boilerplate in posting files.
 
 **Installing..**<br>
 <code>  PM> Install-Package HttpPostedFileHelper </code>
