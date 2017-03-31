@@ -54,21 +54,21 @@ This is a light weight library that helps in the posting of files to IIS Webserv
             }
           
           
-      **Reject File Extensions During Upload**<br>
-        You can specify the file types to be rejected during an upload by supplying a <code>string</code> of the file extensions         
+    **Reject File Extensions During Upload**<br>
+       You can specify the file types to be rejected during an upload by supplying a <code>string</code> of the file extensions         
                
              [HttpPost]
              [ValidateAntiForgeryToken]
              public async Task<ActionResult> UploadFile(Model model, IEnumerable<HttpPostedFileBase> file)
-             {
+              {
                FileHelper filehelper = new FileHelper();
                 string reject = ".jpeg,.png,.svg";
                 int postedfiles = await filehelper.ProcessFileAsync(file, "~/PostedFiles",reject);
                 //you can do some other work while awaiting   
                  if (postedfiles > 0)
-              {
+                   {
                     //files were written successfully
-                 }   
+                    }   
                  return View("Home");
              }
   
