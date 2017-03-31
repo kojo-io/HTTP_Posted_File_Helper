@@ -57,7 +57,7 @@ This is a light weight library that helps in the everyday posting of files to II
       **Reject File Extensions During Upload**<br>
          You can specify the file types to be rejected during an upload by supplying a <code>string</code> of the file extensions
              
-             [HttpPost]
+              [HttpPost]
              [ValidateAntiForgeryToken]
              public async Task<ActionResult> UploadFile(Model model, IEnumerable<HttpPostedFileBase> file)
              {
