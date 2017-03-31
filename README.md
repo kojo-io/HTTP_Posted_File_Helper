@@ -1,6 +1,5 @@
-Features of HTTP Posted File Helper V.1.0.1
 
-<img src="https://github.com/frankodoom/HTTP_Posted_File_Helper/blob/master/Resource/logo.png?raw=true" height="100" width="100" />
+HTTP Posted File Helper V.1.0.1 <img src="https://github.com/frankodoom/HTTP_Posted_File_Helper/blob/master/Resource/logo.png?raw=true" height="200" width="120" />
 
 This is a light weight library that helps in the posting of files to IIS Webserver. It providing a helper class <code>FileHElper</code> which contains overloaded m<code>ProcessFile</code> methods which does all the work for you and reduces the everyday boilerplate in posting files.
 
