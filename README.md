@@ -32,7 +32,7 @@ This is a light weight library that helps in the posting of files to IIS Webserv
         {
             FileHelper filehelper = new FileHelper();
             // ProcessFileAsync returns count of files processed           
-            int postedfiles = filehelper.ProcessFileAsync(file, "~/PostedFiles");
+            int postedfiles = filehelper.ProcessFile(file, "~/MyTargetLocation");
             if (postedfiles > 0)
             {
                 //files were written successfully
@@ -49,7 +49,7 @@ This is a light weight library that helps in the posting of files to IIS Webserv
             public async Task<ActionResult> UploadFile(Model model, IEnumerable<HttpPostedFileBase> file)
            {
             FileHelper filehelper = new FileHelper();          
-            await filehelper.ProcessFileAsync(file, "~/PostedFiles");
+            await filehelper.ProcessFileAsync(file, "~/MyTargetLocation");
             //you can do some other work while awaiting          
             return View("Home");
             }
@@ -62,9 +62,9 @@ This is a light weight library that helps in the posting of files to IIS Webserv
              [ValidateAntiForgeryToken]
              public async Task<ActionResult> UploadFile(Model model, IEnumerable<HttpPostedFileBase> file)
               {
-               FileHelper filehelper = new FileHelper();
+                FileHelper filehelper = new FileHelper();
                 string reject = ".jpeg,.png,.svg";
-                int postedfiles = await filehelper.ProcessFileAsync(file, "~/PostedFiles",reject);
+                int postedfiles = await filehelper.ProcessFileAsync(file, "~/MyTargetLocation",reject);
                 //you can do some other work while awaiting   
                  if (postedfiles > 0)
                    {
