@@ -19,7 +19,7 @@ This is a light weight library that helps in the posting of files to IIS Webserv
           {
              //Instanciate the Filehelper class to create a Filehelper Object
              FileHelper filehelper = new FileHelper();
-             filehelper.ProcessFile(file, "{path to Existing or New Directory}");
+             filehelper.ProcessFile(file, "/MyTargetLocation");
                return view();
            }
 
@@ -34,7 +34,7 @@ This is a light weight library that helps in the posting of files to IIS Webserv
         {
             FileHelper filehelper = new FileHelper();
             // ProcessFileAsync returns count of files processed           
-            int postedfiles = filehelper.ProcessFile(file, "~/MyTargetLocation");
+            int postedfiles = filehelper.ProcessFile(file, "/MyTargetLocation");
             if (postedfiles > 0)
             {
                 //files were written successfully
@@ -51,7 +51,7 @@ This is a light weight library that helps in the posting of files to IIS Webserv
            public async Task<ActionResult> UploadFile(Model model, IEnumerable<HttpPostedFileBase> file)
            {
               FileHelper filehelper = new FileHelper();          
-              await filehelper.ProcessFileAsync(file, "~/MyTargetLocation");
+              await filehelper.ProcessFileAsync(file, "/MyTargetLocation");
               //you can do some other work while awaiting          
                return View("Home");
             }
@@ -66,7 +66,7 @@ This is a light weight library that helps in the posting of files to IIS Webserv
               {
                 FileHelper filehelper = new FileHelper();
                 string reject = ".jpeg,.png,.svg";
-                int postedfiles = await filehelper.ProcessFileAsync(file, "~/MyTargetLocation",reject);
+                int postedfiles = await filehelper.ProcessFileAsync(file, "/MyTargetLocation",reject);
                 //you can do some other work while awaiting   
                 if (postedfiles > 0)
                  {
