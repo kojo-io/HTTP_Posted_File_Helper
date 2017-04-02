@@ -35,7 +35,7 @@ This is a light weight library that helps in the posting of files to IIS Webserv
         public ActionResult UploadFile(Model model, IEnumerable<HttpPostedFileBase> file)
         {
             FileHelper filehelper = new FileHelper();
-            // ProcessFileAsync returns count of files processed           
+            // ProcessFile returns count of files processed           
             int postedfiles = filehelper.ProcessFile(file, "/MyTargetLocation");
             if (postedfiles > 0)
             {
